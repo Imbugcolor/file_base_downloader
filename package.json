@@ -1,0 +1,26 @@
+{
+  "name": "lark-base-attachments-downloader",
+  "version": "1.0.0",
+  "private": true,
+  "description": "CLI tool to download Lark Base attachment fields to local files",
+  "bin": {
+    "lark-attachments": "scripts/bin/lark-attachments-cli.js",
+    "lark-attachments-env": "scripts/download_lark_base_attachments.js"
+  },
+  "scripts": {
+    "start": "node scripts/bin/lark-attachments-cli.js",
+    "download:env": "node scripts/download_lark_base_attachments.js --env-file scripts/.env",
+    "build:exe": "pkg scripts/bin/lark-attachments-cli.js --targets node20-win-x64 --output dist/lark-attachments.exe"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "devDependencies": {
+    "pkg": "^5.8.1"
+  },
+  "pkg": {
+    "scripts": [
+      "scripts/**/*.js"
+    ]
+  }
+}
