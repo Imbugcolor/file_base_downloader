@@ -130,6 +130,15 @@ async function main() {
     console.log(`Downloaded: ${result.downloaded}`);
     console.log(`Skipped records (no attachments): ${result.skipped}`);
     console.log(`Failed: ${result.failed}`);
+    if (result.missingAttachmentsFieldCount > 0) {
+      console.log(`[WARN] Missing attachments field in ${result.missingAttachmentsFieldCount} records.`);
+    }
+    if (result.missingNameFieldCount > 0) {
+      console.log(`[WARN] Missing name field in ${result.missingNameFieldCount} records.`);
+    }
+    if (result.sampleFieldKeys && result.sampleFieldKeys.length > 0) {
+      console.log(`Sample field keys from API: ${result.sampleFieldKeys.join(' | ')}`);
+    }
 
     const save = await qa.question('Save config to .env file for next runs? [y/N]: ');
     if (toBool(save)) {
